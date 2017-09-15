@@ -9,7 +9,7 @@ Snippet 简洁而不简单，也许是一款你寻找已久的hexo主题
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/shenliyang/hexo-theme-snippet/blob/master/LICENSE)
 
 
-[在线预览 Demo](http://shenliyang.github.io)
+[在线预览 Demo](https://guyueyang.github.io/)
 
 ![hexo-theme-snippet](http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/snippet-screenshots1000.jpg)
 
