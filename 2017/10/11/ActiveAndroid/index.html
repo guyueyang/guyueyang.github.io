@@ -1,0 +1,326 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable"  content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <link rel="dns-prefetch" href="//t11.baidu.com">
+    <!--SEO-->
+
+<meta name="description" content="好记性不如烂笔头"/>
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>ActiveAndroid使用详解 | 杨晓平の博客</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="杨晓平の博客" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+    <link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css?rev=9.12.0">
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css?rev=3.3.4">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+
+
+    
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+        <a class="branding" href="/" title="">
+            <img src="/img/header_logo.png" alt="Snippet 博客主题">
+        </a>
+        <h2 class="text-hide">Snippet主题</h2>
+        <img src="/img/header_logo.png" alt="Snippet 博客主题" class="hide">
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="fa fa-bars"></i>
+                    </span>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class=""><a href="/">首页</a></li>
+                        
+                            <li role="presentation" class=""><a href="/categories/android/">android</a></li>
+                        
+                            <li role="presentation" class=""><a href="/categories/教程/">教程</a></li>
+                        
+                            <li role="presentation" class=""><a href="/categories/tool/">工具</a></li>
+                        
+                            <li role="presentation" class=""><a href="/categories/source/">源码</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="ActiveAndroid使用详解">
+            
+            ActiveAndroid使用详解
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <span>教程</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            null
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">2017/10/11</span>
+    </span>
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body">
+        <p>ActiveAndroid是一个开源的数据库框架，使我们在Android中使用数据库变得更为简单，今天我们就来看看这个数据库框架的使用。</p>
+<h2 id="1-引入ActiveAndroid"><a href="#1-引入ActiveAndroid" class="headerlink" title="1.引入ActiveAndroid"></a>1.引入ActiveAndroid</h2><p>首先创建我们自己的项目，在项目中引入ActiveAndroid，引入ActiveAndroid需要我们修改两个地方，一个是全局gradle文件，还有一个是局部gradle文件，修改方式如下<br>全局gradle文件，在jcenter（）下方添加如下代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mavenCentral()  </div><div class="line">maven &#123; url <span class="string">"https://oss.sonatype.org/content/repositories/snapshots/"</span> &#125;</div></pre></td></tr></table></figure></p>
+<p>局部gradle文件修改：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile <span class="string">'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'</span></div></pre></td></tr></table></figure></p>
+<h2 id="2-创建表及数据库"><a href="#2-创建表及数据库" class="headerlink" title="2.创建表及数据库"></a>2.创建表及数据库</h2><h2 id="2-1-表的创建"><a href="#2-1-表的创建" class="headerlink" title="2.1.表的创建"></a>2.1.表的创建</h2><p>将ActiveAndroid引入到我们的项目中后，我们就可以开始使用这个东东了，如果大家使用Java中的Hibernate数据库框架，就会觉得ActiveAndroid很简单了。在这里我们需要写一个类继承自Model这个类，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">@Table(name = <span class="string">"user_table"</span>, id = <span class="string">"_id"</span>)  </div><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">UserEntity</span> <span class="keyword">extends</span> <span class="title">Model</span> </span>&#123;  </div><div class="line">    @Column  </div><div class="line">    private <span class="built_in">String</span> username;  </div><div class="line">    @Column  </div><div class="line">    private int age;  </div><div class="line">    @Column  </div><div class="line">    private <span class="built_in">String</span> nickname;  </div><div class="line">  </div><div class="line">    public UserEntity() &#123;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    public UserEntity(int age, <span class="built_in">String</span> nickname, <span class="built_in">String</span> username) &#123;  </div><div class="line">        <span class="keyword">this</span>.age = age;  </div><div class="line">        <span class="keyword">this</span>.nickname = nickname;  </div><div class="line">        <span class="keyword">this</span>.username = username;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    public int getAge() &#123;  </div><div class="line">        <span class="keyword">return</span> age;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    public <span class="keyword">void</span> setAge(int age) &#123;  </div><div class="line">        <span class="keyword">this</span>.age = age;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    public <span class="built_in">String</span> getNickname() &#123;  </div><div class="line">        <span class="keyword">return</span> nickname;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    public <span class="keyword">void</span> setNickname(<span class="built_in">String</span> nickname) &#123;  </div><div class="line">        <span class="keyword">this</span>.nickname = nickname;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    public <span class="built_in">String</span> getUsername() &#123;  </div><div class="line">        <span class="keyword">return</span> username;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    public <span class="keyword">void</span> setUsername(<span class="built_in">String</span> username) &#123;  </div><div class="line">        <span class="keyword">this</span>.username = username;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里有几个地方需要解释一下：<br>1.类名上的@Table注解中有两个值，分别是name=”user_table”以及id=”_id”，其中name=”user_table”表示一会生成的表的名称为user_table，不写的话默认为实体类的名称，id=”_id”表示表的id字段的名称，默认为Id，但是我们在Android开发中一般将表中的id字段名称定义为_id，所以这里设置id=”_id”<br>2.在每一个属性名的上方都有一个@Column注解，该注解表示该字段是表中的一个字段，不加这个注解表示该字段不是表中的字段</p>
+<h2 id="2-2-数据库名称的修改以及版本的配置"><a href="#2-2-数据库名称的修改以及版本的配置" class="headerlink" title="2.2.数据库名称的修改以及版本的配置"></a>2.2.数据库名称的修改以及版本的配置</h2><p>默认情况下创建的数据库名称为Application.db ，如果我们需要修改数据库名称以及进行版本管理需要再清单文件中添加如下节点：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;meta-data android:name=<span class="string">"AA_DB_NAME"</span> android:value=<span class="string">"Pickrand.db"</span> /&gt;  </div><div class="line">        &lt;meta-data android:name=<span class="string">"AA_DB_VERSION"</span> android:value=<span class="string">"5"</span> /&gt;</div></pre></td></tr></table></figure></p>
+<p>其中AA_DB_NAME表示数据库的名称，AA_DB_VERSION表示数据库的版本号，做android开发的筒子们都知道版本号对于一个数据来说非常重要，数据库的版本升级离不开版本号</p>
+<h2 id="2-3数据库升级以及表的修改"><a href="#2-3数据库升级以及表的修改" class="headerlink" title="2.3数据库升级以及表的修改"></a>2.3数据库升级以及表的修改</h2><p>使用ActiveAndroid进行数据库升级稍微有一点点麻烦（个人觉得），假设我需要给数据库中的表添加一个字段该怎么做呢？有以下三个步骤：</p>
+<h2 id="1首先我需要修改我在上面定义的实体类，假设我想在添加一个性别字段，那我需要修改实体类如下："><a href="#1首先我需要修改我在上面定义的实体类，假设我想在添加一个性别字段，那我需要修改实体类如下：" class="headerlink" title="1首先我需要修改我在上面定义的实体类，假设我想在添加一个性别字段，那我需要修改实体类如下："></a>1首先我需要修改我在上面定义的实体类，假设我想在添加一个性别字段，那我需要修改实体类如下：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">@Table(name = <span class="string">"user_table"</span>, id = <span class="string">"_id"</span>)  </div><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">UserEntity</span> <span class="keyword">extends</span> <span class="title">Model</span> </span>&#123;  </div><div class="line">    @Column  </div><div class="line">    private <span class="built_in">String</span> username;  </div><div class="line">    @Column  </div><div class="line">    private int age;  </div><div class="line">    @Column  </div><div class="line">    private <span class="built_in">String</span> nickname;  </div><div class="line">    @Column<span class="comment">//性别字段，新添加的字段  </span></div><div class="line">    private <span class="built_in">String</span> gender;  </div><div class="line">......  </div><div class="line">......  </div><div class="line">......  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="2-在清单文件中修改数据库的版本号，新的版本号是原版本号加1，比如原来的版本号是1，那我现在改为2"><a href="#2-在清单文件中修改数据库的版本号，新的版本号是原版本号加1，比如原来的版本号是1，那我现在改为2" class="headerlink" title="2.在清单文件中修改数据库的版本号，新的版本号是原版本号加1，比如原来的版本号是1，那我现在改为2"></a>2.在清单文件中修改数据库的版本号，新的版本号是原版本号加1，比如原来的版本号是1，那我现在改为2</h2><h2 id="3-添加迁移脚本，最后我还需要添加一个数据库迁移脚本。在我项目的assets文件夹中添加一个子文件夹叫做migrations，在这个字文件夹中添加迁移脚本，脚本的名称为当前数据库最新版本号-sql，假设我最新的数据库版本号为2，那么我的迁移脚本的名称就为2-sql。针对我上面数据库升级的情况（添加一个字段），我的迁移脚本内容如下："><a href="#3-添加迁移脚本，最后我还需要添加一个数据库迁移脚本。在我项目的assets文件夹中添加一个子文件夹叫做migrations，在这个字文件夹中添加迁移脚本，脚本的名称为当前数据库最新版本号-sql，假设我最新的数据库版本号为2，那么我的迁移脚本的名称就为2-sql。针对我上面数据库升级的情况（添加一个字段），我的迁移脚本内容如下：" class="headerlink" title="3.添加迁移脚本，最后我还需要添加一个数据库迁移脚本。在我项目的assets文件夹中添加一个子文件夹叫做migrations，在这个字文件夹中添加迁移脚本，脚本的名称为当前数据库最新版本号.sql，假设我最新的数据库版本号为2，那么我的迁移脚本的名称就为2.sql。针对我上面数据库升级的情况（添加一个字段），我的迁移脚本内容如下："></a>3.添加迁移脚本，最后我还需要添加一个数据库迁移脚本。在我项目的assets文件夹中添加一个子文件夹叫做migrations，在这个字文件夹中添加迁移脚本，脚本的名称为当前数据库最新版本号.sql，假设我最新的数据库版本号为2，那么我的迁移脚本的名称就为2.sql。针对我上面数据库升级的情况（添加一个字段），我的迁移脚本内容如下：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE user_table ADD COLUMN nickname;</div></pre></td></tr></table></figure>
+<p>如果没有assets文件夹那我们需要先创建一个  assets文件夹创建的文件在main之下<br>OK，完成以上三步，我的新字段就可以成功的添加到我的表中了。</p>
+<h2 id="3-增删改查"><a href="#3-增删改查" class="headerlink" title="3.增删改查"></a>3.增删改查</h2><p>完成以上步骤之后，接下来我们就可以来看看数据库中的增删改查操作了。</p>
+<h2 id="3-1增"><a href="#3-1增" class="headerlink" title="3.1增"></a>3.1增</h2><p>添加数据太easy了，我只需要new一个实体类出来，然后调用这个实体类的save方法即可，咦，我的实体类哪来的save方法呢？别忘了，我的实体类继承自Model类哦。OK，那我们来看一个简单的插入操作：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">UserEntity userEntity = <span class="keyword">new</span> UserEntity(<span class="number">56</span>, <span class="string">"李四"</span>, <span class="string">"lisi"</span>);  </div><div class="line">        userEntity.save();</div></pre></td></tr></table></figure></p>
+<p>OK，数据已经添加到表中了。当然，这个save方法有一个返回值，这个返回值表示当前插入的数据的id。</p>
+<h2 id="3-2删"><a href="#3-2删" class="headerlink" title="3.2删"></a>3.2删</h2><p>针对删除操作，ActiveAndroid提供了两种解决方案，一种是已知id，用户需要按id对数据进行删除，如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UserEntity.delete(UserEntity.class, <span class="number">4</span>);</div></pre></td></tr></table></figure></p>
+<p>表示删除_id为4的数据。<br>第二种删除方式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Delete <span class="keyword">delete</span> = <span class="keyword">new</span> Delete();  </div><div class="line">        <span class="keyword">delete</span>.from(UserEntity.class).where(<span class="string">"age='89'"</span>).and(<span class="string">"nickname='李四'"</span>).execute();</div></pre></td></tr></table></figure>
+<p>表示删除age=89并且nickname=李四的数据，当然还有各种左连接右连接ActiveAndroid也都是支持的。</p>
+<h2 id="3-3改"><a href="#3-3改" class="headerlink" title="3.3改"></a>3.3改</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Update update = <span class="keyword">new</span> Update(UserEntity.class);  </div><div class="line">        update.set(<span class="string">"nickname='王五'"</span>).where(<span class="string">"age='89'"</span>).execute();</div></pre></td></tr></table></figure>
+<p>修改也是很简单的，上面这两行代码表示将age为89的数据中的nickname改为王五。这里不支持and语句，如果筒子们有多个查询条件可以一起放在where语句中执行，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Update update = <span class="keyword">new</span> Update(UserEntity.class);  </div><div class="line">        update.set(<span class="string">"nickname='王五'"</span>).where(<span class="string">"age='89' and nickname='zhangsan'"</span>).execute();</div></pre></td></tr></table></figure>
+<h2 id="3-4查"><a href="#3-4查" class="headerlink" title="3.4查"></a>3.4查</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Select select = <span class="keyword">new</span> Select();  </div><div class="line">        List&lt;UserEntity&gt; list = select.from(UserEntity.class).execute();  </div><div class="line">        <span class="keyword">for</span> (UserEntity userEntity : list) &#123;  </div><div class="line">            Log.d(<span class="string">"google_lenve_fb"</span>, <span class="string">"select: "</span> + userEntity.toString());  </div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p>上面代码表示查询user_table表中所有的数据，查询结果直接返回一个List集合。我们可以直接遍历这个List集合并将其显示出来。查询条件也支持where以及各种左连接，右连接分页查询等。如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;UserEntity&gt; list = select.from(UserEntity.class).where(<span class="string">""</span>).and(<span class="string">""</span>).as(<span class="string">""</span>).groupBy(<span class="string">""</span>).having(<span class="string">""</span>).offset(<span class="string">""</span>).limit(<span class="string">""</span>).execute();</div></pre></td></tr></table></figure>
+<h2 id="4-批量插入数据-这个我们要使用事务"><a href="#4-批量插入数据-这个我们要使用事务" class="headerlink" title="4.批量插入数据 这个我们要使用事务"></a>4.批量插入数据 这个我们要使用事务</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">ActiveAndroid.beginTransaction();</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">for</span> (int i=<span class="number">0</span> ;i&lt;<span class="number">100</span>; i++)&#123;</div><div class="line">        UserEntity userEntity1=<span class="keyword">new</span> UserEntity();</div><div class="line">        userEntity1.setAge(i);</div><div class="line">        userEntity1.setNickname(<span class="string">"nickname"</span>+i);</div><div class="line">        userEntity1.setUsername(<span class="string">"username"</span>+i);</div><div class="line">        userEntity1.save();</div><div class="line">    &#125;</div><div class="line">    ActiveAndroid.setTransactionSuccessful();</div><div class="line">&#125;</div><div class="line"><span class="keyword">finally</span> &#123;</div><div class="line">    ActiveAndroid.endTransaction();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="5-使用注意"><a href="#5-使用注意" class="headerlink" title="5 使用注意"></a>5 使用注意</h2><p>ActiveAndroid对5.0以上系统支持不是很好会出现创建表失败  Application继承系统原生的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">    @Override</div><div class="line">    public void onCreate() &#123;</div><div class="line">        super.onCreate();</div><div class="line">//        ActiveAndroid.initialize(this);</div><div class="line">        initializeDB();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    protected void initializeDB() &#123;</div><div class="line">        Configuration.Builder config = new Configuration.Builder(this);</div><div class="line">        config.addModelClasses(UserEntity.class);</div><div class="line">		//config.addModelClasses(UserEntity.class,....);</div><div class="line">        ActiveAndroid.initialize(config.create());</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>5.0以上应该把ActiveAndroid.initialize(this) 改掉</p>
+<h2 id="5-优势与劣势"><a href="#5-优势与劣势" class="headerlink" title="5.优势与劣势"></a>5.优势与劣势</h2><p>整体上来说，ActiveAndroid还是很好用的，极大的方便了我们的数据库操作，简化了代码操作，加上ActiveAndroid对版本升级较完美的支持，使得它更加的灵活。<br>但是大家也知道，这种框架之所以方便是在牺牲一部分性能的条件下获得的，执行效率肯定不如我们自己写的CRUD语句，所以筒子们在工作中要根据自己的实际情况来选择是否用该框架。</p>
+
+    </div>
+
+    <div class="post-footer">   
+        <div>
+            
+                转载声明: 商业转载请联系作者获得授权,非商业转载请注明出处 © Snippet
+            
+        </div>
+        <div>
+            
+                版权声明: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
+知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
+</a>
+            
+        </div>  
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2017/09/27/git2/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+
+
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDk0MC83NDg5">
+    <script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+    </script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+
+
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+    <aside class="col-md-4 sidebar">
+        
+        
+        
+        
+    <div class="widget">
+        <h3 class="title">分类</h3>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/教程/"><i class="fa" aria-hidden="true">教程</i></a><span class="category-list-count">5</span></li></ul>
+    </div>
+
+
+        
+        
+    <div class="widget">
+      <h3 class="title">归档</h3>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/"><i class="fa" aria-hidden="true">October 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/"><i class="fa" aria-hidden="true">September 2017</i></a><span class="archive-list-count">4</span></li></ul>
+    </div>
+
+
+        
+        
+
+        
+        
+    <div class="widget">
+        <h3 class="title">友链</h3>
+        <div class="content friends-link">
+        
+            <a href="https://xnxy.github.io/zhouwei/" class="fa" target="_blank">周伟</a>
+        
+            <a href="http://blog.wangyangde.cn/" class="fa" target="_blank">web前端开发</a>
+        
+            <a href="http://www.wangquanwei.com/" class="fa" target="_blank">王权伟の博客</a>
+        
+        </div>
+    </div>
+
+
+        
+    </aside>
+
+            </div>
+        </div>
+    </section>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+     
+        </div>
+    </div>
+</footer>
+
+
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 
+                    <a href="//www.shenliyang.com/" rel="nofollow">Snippet中文网</a>
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    Theme by <a href="https://github.com/guyueyang/guyueyang.github.io" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <script src="/assets/highlight.pack.js?rev=@@hash"></script>
+  <script>
+    hljs.initHighlightingOnLoad(); //初始化代码高亮 
+  </script>
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

@@ -23,7 +23,7 @@
     <!--Title-->
 
 
-<title>Git撤销删除和删除文件 | 杨晓平の博客</title>
+<title>归档：2017/10 | 杨晓平の博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="杨晓平の博客" type="application/atom+xml">
@@ -34,11 +34,7 @@
     
 
 
-    <link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
 
-
-
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css?rev=9.12.0">
 
 
 <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css?rev=3.3.4">
@@ -107,15 +103,14 @@
         <div class="container">
             <div class="row">
                 <main class="col-md-8 main-content">
-                    <p id="process"></p>
-<article class="post">
-    <div class="post-head">
-        <h1 id="Git撤销删除和删除文件">
-            
-            Git撤销删除和删除文件
-            
-        </h1>
-        <div class="post-meta">
+                    <div id="main">
+  <div id="post-list">
+    <ul class="archives-post-list">
+        
+          <li class="post-items" _href="/2017/10/11/ActiveAndroid/">
+            <p class="info">2017</p>
+            <h2 class="post-item-title">ActiveAndroid使用详解</h2>
+              <div class="post-meta">
     
     
     <span class="categories-meta fa-wrap">
@@ -136,86 +131,15 @@
     
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
-        <span class="date-meta">2017/09/26</span>
+        <span class="date-meta">10/11</span>
     </span>
 </div>
 
-            
-            
-    </div>
-    
-    <div class="post-body">
-        <h2 id="Git撤销修改-git-checkout"><a href="#Git撤销修改-git-checkout" class="headerlink" title="Git撤销修改 git checkout"></a>Git撤销修改 git checkout</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git checkout -- readme.txt</div></pre></td></tr></table></figure>
-<p>命令git checkout – readme.txt意思就是，把readme.txt文件在工作区的修改全部撤销，这里有两种情况：</p>
-<p>一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；</p>
-<p>一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。</p>
-<p>总之，就是让这个文件回到最近一次git commit或git add时的状态。</p>
-<p>文件内容果然复原了。</p>
-<p>git checkout – file命令中的–很重要，没有–，就变成了“切换到另一个分支”的命令，我们在后面的分支管理中会再次遇到git checkout命令。</p>
-<p>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout – file。</p>
-<p>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。</p>
-<p>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。</p>
-<h2 id="删除文件-rm"><a href="#删除文件-rm" class="headerlink" title="删除文件 rm"></a>删除文件 rm</h2><p>在Git中，删除也是一个修改操作，我们实战一下，先添加一个新文件test.txt到Git并且提交：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rm test.txt</div></pre></td></tr></table></figure>
-
-    </div>
-
-    <div class="post-footer">   
-        <div>
-            
-                转载声明: 商业转载请联系作者获得授权,非商业转载请注明出处 © Snippet
-            
-        </div>
-        <div>
-            
-                版权声明: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
-知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
-</a>
-            
-        </div>  
-    </div>
-</article>
-
-<div class="article-nav prev-next-wrap clearfix">
-    
-        <a href="/2017/09/27/git2/" class="pre-post btn btn-default"><i class="fa fa-angle-left fa-fw"></i>上一篇</a>
-    
-    
-        <a href="/2017/09/26/git/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
-    
-</div>
-
-
-    <div id="comments">
+          </li>
         
-    <div id="uyan_frame"></div>
-    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
-
-
-  <!-- 来必力City版安装代码 -->
-<div id="lv-container" data-id="city" data-uid="MTAyMC8zMDk0MC83NDg5">
-    <script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-
-       if (typeof LivereTower === 'function') { return; }
-
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-    </script>
-<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+    </ul>
+  </div>
 </div>
-<!-- City版安装代码已完成 -->
-
-
-
-
-
-    </div>
 
 
 
@@ -298,11 +222,6 @@
         </div>
     </div>
 </div>
-
-  <script src="/assets/highlight.pack.js?rev=@@hash"></script>
-  <script>
-    hljs.initHighlightingOnLoad(); //初始化代码高亮 
-  </script>
 
 <script src="/js/app.js?rev=@@hash"></script>
 
